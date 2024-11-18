@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silvesterparty 2024</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            color: #d35400;
+            text-align: center;
+        }
+        form {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input, textarea, select, button {
+            width: 100%;
+            margin-top: 5px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        button {
+            background-color: #27ae60;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+        }
+        button:hover {
+            background-color: #219150;
+        }
+        .items-list {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Silvesterparty 2024</h1>
+    <p style="text-align: center;">Feier mit uns ins neue Jahr! 🎉</p>
+    <p style="text-align: center;">Wann: 31.12.2024<br>Wo: [Deine Adresse]</p>
+
+    <form id="partyForm">
+        <label for="name">Dein Name:</label>
+        <input type="text" id="name" name="name" placeholder="Max Mustermann" required>
+
+        <label for="attendance">Kommst du zur Party?</label>
+        <select id="attendance" name="attendance" required>
+            <option value="yes">Ja, ich komme!</option>
+            <option value="no">Leider nicht</option>
+        </select>
+
+        <label for="items">Was bringst du mit?</label>
+        <textarea id="items" name="items" placeholder="Beispiel: Salat, Getränke, Chips"></textarea>
+
+        <button type="submit">Abschicken</button>
+    </form>
+
+    <div class="items-list">
+        <h2>Mitbringsel-Liste:</h2>
+        <ul id="itemsList">
+            <!-- Mitbringsel werden hier angezeigt -->
+        </ul>
+    </div>
+
+    <script>
+        const form = document.getElementById('partyForm');
+        const itemsList = document.getElementById('itemsList');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const attendance = document.getElementById('attendance').value;
+            const items = document.getElementById('items').value;
+
+            if (attendance === 'yes' && items) {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${name} bringt mit: ${items}`;
+                itemsList.appendChild(listItem);
+            }
+
+            form.reset();
+            alert(attendance === 'yes' ? "Vielen Dank für die Zusage!" : "Schade, dass du nicht dabei bist.");
+        });
+    </script>
+</body>
+</html>
